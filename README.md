@@ -59,6 +59,7 @@ Esto significa que:
 
 Si querés comunicarte conmigo para ideas, colaboración o emprendimientos:  
 
-- ✉️ **Correo:** brunorios.dev@gmail.com  
+- ✉️ **Correo:** brunorioscorp4@gmail.com  
 - 💼 [LinkedIn](https://www.linkedin.com/in/bruno-rios-576016328/)
+
 
