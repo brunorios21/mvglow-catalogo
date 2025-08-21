@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MV Glow - Catálogo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff0f5;
+    }
+    .navbar-mvglow {
+      background: linear-gradient(90deg, #ffb6c1 0%, #ff69b4 100%);
+      box-shadow: 0 4px 24px #ff69b4a0;
+    }
+    .navbar-mvglow .navbar-brand {
+      font-size: 2em;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #fff !important;
+      text-shadow: 0 2px 10px #ff69b4a0;
+    }
+    .navbar-mvglow .nav-link {
+      color: #fff !important;
+      font-weight: 600;
+      font-size: 1.1em;
+      margin-right: 20px;
+      transition: color 0.2s;
+    }
+    .navbar-mvglow .nav-link:hover {
+      color: #fffde4 !important;
+      text-decoration: underline;
+    }
+    .contact-bar {
+      background: #fff;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 2px 12px #ffb6c140;
+      padding: 18px 0 10px 0;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .contact-bar .btn {
+      margin: 0 10px 10px 10px;
+      font-size: 1.1em;
+      font-weight: 600;
+      border-radius: 30px;
+      padding: 10px 24px;
+      box-shadow: 0 2px 8px #ffb6c140;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+    .contact-bar .btn-wsp {
+      background: #25d366;
+      color: #fff;
+    }
+    .contact-bar .btn-wsp:hover {
+      background: #1ebe5d;
+      color: #fff;
+      box-shadow: 0 4px 16px #25d36660;
+    }
+    .contact-bar .btn-ig {
+      background: #d63384;
+      color: #fff;
+    }
+    .contact-bar .btn-ig:hover {
+      background: #b41c6b;
+      color: #fff;
+    }
+    .contact-bar .btn-mail {
+      background: #ffb6c1;
+      color: #fff;
+    }
+    .contact-bar .btn-mail:hover {
+      background: #ff69b4;
+      color: #fff;
+    }
+    .main-header h1 {
+      font-size: 3em;
+      font-weight: 800;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 16px #ff69b4a0, 0 1px 0 #fff;
+      background: linear-gradient(90deg,#fffde4,#ffb6c1,#ff69b4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+    .main-header p {
+      font-size: 1.3em;
+      font-weight: 500;
+      margin-bottom: 0;
+      color: #fffde4;
+      text-shadow: 0 1px 8px #ff69b4a0;
+    }
+    .sobre-nosotros {
+      background: linear-gradient(90deg, #fff0f5 80%, #ffe4ec 100%);
+      border-radius: 16px;
+      box-shadow: 0 2px 12px #ffb6c140;
+      padding: 32px 24px;
+      margin-bottom: 40px;
+      text-align: center;
+      font-size: 1.2em;
+      color: #b41c6b;
+      font-weight: 500;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .categoria-titulo {
+      font-size: 2em;
+      color: #d63384;
+      font-weight: 700;
+      margin-bottom: 30px;
+      text-align: left;
+      letter-spacing: 1px;
+      border-left: 6px solid #ffb6c1;
+      padding-left: 15px;
+      background: linear-gradient(90deg, #fff0f5 80%, #ffe4ec 100%);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px #ffe4ec60;
+    }
+    .producto {
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.13);
+      padding: 10px;
+      min-height: 420px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .producto:hover {
+      transform: scale(1.035);
+      box-shadow: 0 8px 24px rgba(255, 105, 180, 0.22);
+    }
+    .carousel-inner {
+      border-radius: 12px;
+      box-shadow: 0 2px 12px #ffb6c140;
+      background: #fff;
+    }
+    .producto img {
+      width: 100%;
+      height: 260px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #fff;
+      margin-bottom: 10px;
+      border: 1px solid #ffe4ec;
+      box-shadow: 0 1px 8px #ffe4ec60;
+    }
+    .card-title {
+      color: #d63384;
+      font-weight: 800;
+      font-size: 1.5em;
+      margin-bottom: 5px;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 8px #ffe4ec80;
+    }
+    .marca {
+      font-size: 1.1em;
+      color: #ff69b4;
+      font-weight: 700;
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .precio {
+      font-size: 1.2em;
+      color: #ff1493;
+      font-weight: bold;
+      margin: 5px 0 10px;
+      letter-spacing: 0.5px;
+      background: #fff0f5;
+      border-radius: 8px;
+      display: inline-block;
+      padding: 2px 12px;
+      box-shadow: 0 1px 4px #ffe4ec60;
+    }
+    .stock {
+      font-size: 1em;
+      color: #25d366;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .btn-wsp {
+      display: inline-block;
+      background-color: #25d366;
+      color: white;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background 0.3s, box-shadow 0.2s;
+      border: none;
+      box-shadow: 0 2px 8px #25d36640;
+      font-size: 1.15em;
+    }
+    .btn-wsp i {
+      margin-right: 8px;
+      font-size: 1.2em;
+      vertical-align: -2px;
+    }
+    .btn-wsp:hover {
+      background-color: #1ebe5d;
+      box-shadow: 0 4px 16px #25d36660;
+      color: #fff;
+    }
+    .card-text {
+      font-size: 1.08em;
+      color: #555;
+      margin-bottom: 0.5em;
+      font-weight: 500;
+    }
+    footer {
+      background-color: #f8bbd0;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 1em;
+      color: #c2185b;
+      font-weight: bold;
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 -2px 12px #f8bbd060;
+    }
+    footer a {
+      color: #c2185b;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+    @media (max-width: 900px) {
+      .row-cols-md-3 > * {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+    }
+    @media (max-width: 600px) {
+      .row-cols-md-3 > * {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+      .main-header h1 {
+        font-size: 2em;
+      }
+      .categoria-titulo {
+        font-size: 1.3em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de navegación moderna -->
+  <nav class="navbar navbar-expand-lg navbar-mvglow sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">MV Glow</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sobre-nosotros">Sobre Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contáctanos</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Barra de contacto moderna -->
+  <div class="contact-bar" id="contacto">
+    <a href="https://wa.me/549XXXXXXXXXX" target="_blank" class="btn btn-wsp"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+    <a href="https://www.instagram.com/mvglow.ar/" target="_blank" class="btn btn-ig"><i class="bi bi-instagram"></i> Instagram</a>
+    <a href="mailto:tuemail@mvglow.com" class="btn btn-mail"><i class="bi bi-envelope"></i> Email</a>
+  </div>
+
+  <!-- Header llamativo -->
+  <header class="main-header">
+    <h1>MV Glow</h1>
+    <p>Catálogo de Belleza &amp; Cuidado Personal</p>
+  </header>
+
+  <!-- Sección Sobre Nosotros -->
+  <section class="sobre-nosotros" id="sobre-nosotros">
+    <h2 style="color:#d63384; font-weight:700; font-size:2em;">Sobre Nosotros</h2>
+    <p>
+      Somos una empresa dedicada a traer productos importados exclusivos desde Estados Unidos.
+      Seleccionamos lo mejor en belleza, cuidado personal y moda para que tengas acceso a tendencias internacionales y calidad premium, siempre con atención personalizada.
+    </p>
+  </section>
+
+  <div class="container">
+
+  <!-- SECCIÓN CORSETS Y BRASIERES -->
+  <section class="categoria" id="corsets-brasieres">
+    <h2 class="categoria-titulo">Corsets y Brasieres</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+      <!-- Brasier VS Verde Esmeralda 90/95 -->
+      <div class="col">
+        <div class="producto card h-100">
+          <img src="{{ url_for('static', filename='img/img5A_BrasierVerde.jpg') }}" alt="Brasier VS Verde Esmeralda 90/95" class="card-img-top">
+          <div class="card-body d-flex flex-column">
+            <div class="marca">Victoria's Secret</div>
+            <h5 class="card-title">Brasier VS Verde Esmeralda</h5>
+            <span class="precio">$10.000</span>
+            <div class="stock">Talles: 90/95</div>
+            <p class="card-text">Color vibrante y diseño cómodo para todos los días.</p>
+            <a href="https://wa.me/549XXXXXXXXXX?text=Hola!%20Quiero%20el%20Brasier%20VS%20Verde%20Esmeralda%2090/95" target="_blank" class="btn-wsp mt-auto"><i class="bi bi-whatsapp"></i>Pedir</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brasier VS 80/85 (img6B y img7A) -->
+      <div class="col">
+        <div class="producto card h-100">
+          <div id="carouselBrasierVS8085" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='img/img6B_A.jpg') }}" alt="Brasier VS 80/85 - Variante 1" class="d-block w-100">
+              </div>
+              <div class="carousel-item">
+                <img src="{{ url_for('static', filename='img/img6B.jpg') }}" alt="Brasier VS 80/85 - Variante 2" class="d-block w-100">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselBrasierVS8085" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselBrasierVS8085" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <div class="marca">Victoria's Secret</div>
+            <h5 class="card-title">Brasier VS</h5>
+            <span class="precio">Consultar precio</span>
+            <div class="stock">Talles: 80/85</div>
+            <p class="card-text">Brasier clásico, importado.</p>
+            <a href="https://wa.me/549XXXXXXXXXX?text=Hola!%20Quiero%20el%20Brasier%20VS%2080/85" target="_blank" class="btn-wsp mt-auto"><i class="bi bi-whatsapp"></i>Pedir</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brasier VS M (img8 y img9A) -->
+      <div class="col">
+        <div class="producto card h-100">
+          <div id="carouselBrasierVSM" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='img/img8.jpg') }}" alt="Brasier VS M - Variante 1" class="d-block w-100">
+              </div>
+              <div class="carousel-item">
+                <img src="{{ url_for('static', filename='img/img9A.jpg') }}" alt="Brasier VS M - Variante 2" class="d-block w-100">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselBrasierVSM" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselBrasierVSM" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <div class="marca">Victoria's Secret</div>
+            <h5 class="card-title">Brasier VS</h5>
+            <span class="precio">Consultar precio</span>
+            <div class="stock">Talle: M</div>
+            <p class="card-text">Brasier importado, talle M.</p>
+            <a href="https://wa.me/549XXXXXXXXXX?text=Hola!%20Quiero%20el%20Brasier%20VS%20M" target="_blank" class="btn-wsp mt-auto"><i class="bi bi-whatsapp"></i>Pedir</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Less Strass VS Asteroid Grey (XS, S, M, M) -->
+      <div class="col">
+        <div class="producto card h-100">
+          <div id="carouselLessStrassVSAG" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='img/img12A_LessStrassVS(colorasteroidgrey).jpg') }}" alt="Less Strass VS Asteroid Grey XS" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block"><span class="badge bg-light text-dark">XS</span></div>
+              </div>
+              <div class="carousel-item">
+                <img src="{{ url_for('static', filename='img/img12B_LessStrassVS(colorasteroidgrey).jpg') }}" alt="Less Strass VS Asteroid Grey S" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block"><span class="badge bg-light text-dark">S</span></div>
+              </div>
+              <div class="carousel-item">
+                <img src="{{ url_for('static', filename='img/img12C_essStrassVS(colorasteroidgrey).jpg') }}" alt="Less Strass VS Asteroid Grey M" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block"><span class="badge bg-light text-dark">M</span></div>
+              </div>
+              <div class="carousel-item">
+                <img src="{{ url_for('static', filename='img/img12D_essStrassVS(colorasteroidgrey).jpg') }}" alt="Less Strass VS Asteroid Grey M" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block"><span class="badge bg-light text-dark">M</span></div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselLessStrassVSAG" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselLessStrassVSAG" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <div class="marca">Victoria's Secret</div>
+            <h5 class="card-title">Less Strass VS (Asteroid Grey)</h5>
+            <span class="precio">Consultar precio</span>
+            <div class="stock">Talles: XS, S, M</div>
+            <p class="card-text">Less Strass color asteroid grey, importado.</p>
+            <a href="https://wa.me/549XXXXXXXXXX?text=Hola!%20Quiero%20el%20Less%20Strass%20VS%20Asteroid%20Grey" target="_blank" class="btn-wsp mt-auto"><i class="bi bi-whatsapp"></i>Pedir</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Less Strass VS Purple Vapor Liso -->
+      <div class="col">
+        <div class="producto card h-100">
+          <img src="{{ url_for('static', filename='img/img13ALessStrassVS(colorpurplevaporliso).jpg') }}" alt="Less Strass VS Purple Vapor Liso" class="card-img-top">
+          <div class="card-body d-flex flex-column">
+            <div class="marca">Victoria's Secret</div>
+            <h5 class="card-title">Less Strass VS (Purple Vapor Liso)</h5>
+            <span class="precio">Consultar precio</span>
+            <div class="stock">Talle: Consultar</div>
+            <p class="card-text">Less Strass color purple vapor liso, importado.</p>
+            <a href="https://wa.me/549XXXXXXXXXX?text=Hola!%20Quiero%20el%20Less%20Strass%20VS%20Purple%20Vapor%20Liso" target="_blank" class="btn-wsp mt-auto"><i class="bi bi-whatsapp"></i>Pedir</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Strass VS Purple Vapor Liso -->
+      <div class="col">
+        <div class="producto card h-100">
+          <img src="{{ url_for('static', filename='img/img13B_StrassVS(colorpurplevaporliso).jpg') }}" alt="Strass VS Purple Vapor Liso" class="card-img-top">
+          <div class="card-body d-flex flex-column">
+            <div class="marca">Victoria's Secret</div>
+            <h5 class="card-title">Strass VS (Purple Vapor Liso)</h5>
+            <span class="precio">Consultar precio</span>
+            <div class="stock">Talle: Consultar</div>
+            <p class="card-text">Strass color purple vapor liso, importado.</p>
+            <a href="https://wa.me/549XXXXXXXXXX?text=Hola!%20Quiero%20el%20Strass%20VS%20Purple%20Vapor%20Liso" target="_blank" class="btn-wsp mt-auto"><i class="bi bi-whatsapp"></i>Pedir</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Less Strass VS Purple Vapor Liso (variante C) -->
+      <div class="col">
+        <div class="producto card h-100">
+          <img src="{{ url_for('static', filename='img/img13C_Less StrassVS(colorpurplevaporliso).jpg') }}" alt="Less Strass VS Purple Vapor Liso" class="card-img-top">
+          <div class="card-body d-flex flex-column">
+            <div class="marca">Victoria's Secret</div>
+            <h5 class="card-title">Less Strass VS (Purple Vapor Liso)</h5>
+            <span class="precio">Consultar precio</span>
+            <div class="stock">Talle: Consultar</div>
+            <p class="card-text">Less Strass color purple vapor liso, importado.</p>
+            <a href="https://wa.me/549XXXXXXXXXX?text=Hola!%20Quiero%20el%20Less%20Strass%20VS%20Purple%20Vapor%20Liso" target="_blank" class="btn-wsp mt-auto"><i class="bi bi-whatsapp"></i>Pedir</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Less Strass VS Negro Liso (S, con carousel) -->
+      <div class="col">
+        <div class="producto card h-100">
+          <div id="carouselLessStrassVSNegro" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='img/img14A_LessStrassVS(colornegroliso).jpg') }}" alt="Less Strass VS Negro Liso S - 1" class="d-block w-100">
+              </div>
+              <div class="carousel-item">
+                <img src="{{ url_for('static', filename='img/img14B_LessStrassVS(colornegroliso).jpg') }}" alt="Less Strass VS Negro Liso S - 2" class="d-block w-100">
+              </div>
+              <div class="carousel-item">
+                <img src="{{ url_for('static', filename='img/img14C_LessStrassVS(colornegroliso).jpg') }}" alt="Less Strass VS Negro Liso S - 3" class="d-block w-100">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselLessStrassVSNegro" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselLessStrassVSNegro" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <div class="marca">Victoria's Secret</div>
+            <h5 class="card-title">Less Strass VS (Negro Liso)</h5>
+            <span class="precio">Consultar precio</span>
+            <div class="stock">Talle: S</div>
+            <p class="card-text">Less Strass color negro liso, importado.</p>
+            <a href="https://wa.me/549XXXXXXXXXX?text=Hola!%20Quiero%20el%20Less%20Strass%20VS%20Negro%20Liso%20S" target="_blank" class="btn-wsp mt-auto"><i class="bi bi-whatsapp"></i>Pedir</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECCIÓN PIJAMAS -->
+  <section class="categoria" id="pijamas">
+    <h2 class="categoria-titulo">Pijamas</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+      <!-- Pijama VS Modal S -->
+      <div class="col">
+        <div class="producto card h-100">
+          <img src="{{ url_for('static', filename='img/img10A_PijamaVSmodal.jpg') }}" alt="Pijama VS Modal S" class="card-img-top">
+          <div class="card-body d-flex flex-column">
+            <div class="marca">Victoria's Secret</div>
+            <h5 class="card-title">Pijama VS Modal</h5>
+            <span class="precio">Consultar precio</span>
+            <div class="stock">Talle: S</div>
+            <p class="card-text">Pijama importado, tela modal suave y cómoda.</p>
+            <a href="https://wa.me/549XXXXXXXXXX?text=Hola!%20Quiero%20el%20Pijama%20VS%20Modal%20S" target="_blank" class="btn-wsp mt-auto"><i class="bi bi-whatsapp"></i>Pedir</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pijama Strass VS largo rojo S -->
+      <div class="col">
+        <div class="producto card h-100">
+          <img src="{{ url_for('static', filename='img/img11A_PijamaStrassVSlargo(colorrojo).jpg') }}" alt="Pijama Strass VS largo rojo S" class="card-img-top">
+          <div class="card-body d-flex flex-column">
+            <div class="marca">Victoria's Secret</div>
+            <h5 class="card-title">Pijama Strass VS largo (Rojo)</h5>
+            <span class="precio">Consultar precio</span>
+            <div class="stock">Talle: S</div>
+            <p class="card-text">Pijama largo color rojo con strass, importado.</p>
+            <a href="https://wa.me/549XXXXXXXXXX?text=Hola!%20Quiero%20el%20Pijama%20Strass%20VS%20largo%20rojo%20S" target="_blank" class="btn-wsp mt-auto"><i class="bi bi-whatsapp"></i>Pedir</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+    <!-- ...más secciones y productos... -->
+  </div>
+
+  <footer>
+    Seguinos en <a href="https://www.instagram.com/mvglow.ar/" target="_blank">@mvglow.ar</a>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

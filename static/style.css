@@ -1,0 +1,146 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff0f5;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background: linear-gradient(90deg, #ffb6c1, #ff69b4);
+  color: white;
+  text-align: center;
+  padding: 30px 20px 10px 20px; /* menos padding abajo */
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+header p {
+  margin: 5px 0 0;
+  font-weight: 600;
+}
+
+.catalogo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 40px 20px 0 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.categoria {
+  margin-bottom: 60px;
+  width: 100%;
+}
+
+.categoria-titulo {
+  font-size: 2em;
+  color: #d63384;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: left;
+  letter-spacing: 1px;
+  border-left: 6px solid #ffb6c1;
+  padding-left: 15px;
+  background: linear-gradient(90deg, #fff0f5 80%, #ffe4ec 100%);
+  border-radius: 8px;
+}
+
+.producto {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+  padding: 20px;
+  max-width: 340px;
+  min-height: 420px;
+  text-align: center;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.producto.placeholder {
+  background: transparent;
+  box-shadow: none;
+  pointer-events: none;
+  min-height: 420px;
+}
+
+.producto:hover {
+  transform: scale(1.03);
+}
+
+.producto img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  object-fit: cover;
+  height: 180px;
+}
+
+.producto h2, .producto h5, .card-title {
+  color: #d63384;
+  margin: 0 0 5px;
+}
+
+.precio {
+  font-size: 1.2em;
+  color: #ff1493;
+  font-weight: bold;
+  margin: 5px 0 10px;
+}
+
+.boton-wsp, .btn-wsp {
+  display: inline-block;
+  background-color: #25d366;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.boton-wsp:hover, .btn-wsp:hover {
+  background-color: #1ebe5d;
+}
+
+footer {
+  background-color: #f8bbd0;
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+  font-size: 0.9em;
+}
+
+footer a {
+  color: #c2185b;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .catalogo {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .catalogo {
+    grid-template-columns: 1fr;
+    padding: 20px 5px 0 5px;
+  }
+  .producto {
+    max-width: 100%;
+  }
+}
