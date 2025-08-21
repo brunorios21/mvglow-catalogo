@@ -9,23 +9,23 @@
 
 ---
 
-## 📌 Sobre el Proyecto  
+## Sobre el Proyecto  
 
 **MVGlow** es un proyecto en constante evolución pensado para emprendedores y pequeñas empresas que desean dar un salto al mundo digital.  
 La idea es construir un sistema sólido, escalable y moderno que no solo funcione en la actualidad, sino que también pueda crecer con el tiempo.  
 
-🔹 Actualmente:  
+Actualmente:  
 - No cuenta aún con contenedores ni base de datos.  
 - Está orientado al diseño de interfaces y estructura del proyecto.  
 
-🔮 Futuro próximo:  
+Futuro próximo:  
 - Implementación de contenedores (Docker).  
 - Integración de una base de datos robusta (PostgreSQL/MySQL).  
 - Nuevas funciones pensadas para emprendimientos.  
 
 ---
 
-## 🚀 Características  
+## Características  
 
 ✔️ Proyecto en crecimiento constante.  
 ✔️ Orientado a la innovación para emprendedores.  
@@ -34,14 +34,14 @@ La idea es construir un sistema sólido, escalable y moderno que no solo funcion
 
 ---
 
-## 📖 Filosofía  
+## Filosofía  
 
 Lo que más me apasiona es **crear cosas nuevas para emprendedores**, ayudando a transformar ideas en proyectos reales y funcionales.  
 MVGlow nace con la intención de ser una herramienta que potencie a quienes quieren empezar o expandir su negocio digital.  
 
 ---
 
-## 📜 Licencia  
+## Licencia  
 
 Este proyecto está bajo la **Licencia MIT**.  
 Esto significa que:  
@@ -55,12 +55,9 @@ Esto significa que:
 
 ---
 
-## 📬 Contacto  
+## Contacto  
 
 Si querés comunicarte conmigo para ideas, colaboración o emprendimientos:  
 
 - ✉️ **Correo:** brunorios.dev@gmail.com  
-- 💼 **LinkedIn:** [linkedin.com/in/brunorios](https://linkedin.com/in/brunorios)  
-- 🌐 **Portafolio (próximamente)**  
-
----
+- 💼 **LinkedIn:** [linkedin.com/in/brunorios](https://linkedin.com/in/brunorios)    
